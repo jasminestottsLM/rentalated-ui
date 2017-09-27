@@ -14,7 +14,7 @@ import { SessionDataService } from './session-data/session-data.service';
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent},
-  { path: '', component: ApartmentListingsComponent }
+  { path: '', component: ApartmentListingsComponent}
 ];
 
 @NgModule({
