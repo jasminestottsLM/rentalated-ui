@@ -9,6 +9,7 @@ import { User } from '../user';
   templateUrl: './my-listings.component.html',
   styleUrls: ['./my-listings.component.css']
 })
+
 export class MyListingsComponent implements OnInit {
 
   private apartments: Apartment[];
@@ -34,10 +35,17 @@ export class MyListingsComponent implements OnInit {
     this.selectedApartment = null;
   }
 
-  deactivate(apartment : Apartment) {
-    this.selectedApartment = apartment;
-    console.log("Apartment is " + this.selectedApartment);
-    this.data
-      .deactivate(this.selectedApartment);
+  deactivate(apartment: Apartment) {
+    console.log(apartment);
+     this.data
+       .deactivate(apartment)
+       .subscribe(() => apartment.is_active = false);
+  }
+
+  activate(apartment: Apartment) {
+    console.log(apartment);
+     this.data
+       .activate(apartment)
+       .subscribe(() => apartment.is_active = true);
   }
 }

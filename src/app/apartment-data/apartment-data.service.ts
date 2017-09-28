@@ -4,13 +4,20 @@ import { Observable } from 'rxjs/Observable';
 import { Apartment } from '../apartment';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ApartmentDataService {
 
   private baseUrl = 'http://localhost:4567/api/apartments';
+  id: string;
+  apartment: Apartment;
 
-  constructor(private http: Http, private router: Router) { }
+  apartmentChanged: Subject<Apartment>;
+
+  constructor(private http: Http, private router: Router) { 
+    this.apartmentChanged = new Subject<Apartment>();
+  }
 
   getActiveListings(): Observable<Apartment[]> {
     return this.http
@@ -24,11 +31,15 @@ export class ApartmentDataService {
       .map(response => response.json());
   }
 
-  deactivate(apartment: Apartment) {
-    const payload = { apartment };
-    return this.http
-      .post(`${this.baseUrl}/deactivate`, payload, { withCredentials: true })
-      .subscribe();
-      
+  deactivate(apartment) {
+    const payload = { id: apartment.id }; 
+     return this.http
+       .post(`${this.baseUrl}/deactivate`, payload, { withCredentials: true });
+  }
+
+  activate(apartment) {
+    const payload = { id: apartment.id };
+     return this.http
+       .post(`${this.baseUrl}/activate`, payload, { withCredentials: true });
   }
 }

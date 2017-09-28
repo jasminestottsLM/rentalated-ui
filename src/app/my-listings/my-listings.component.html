@@ -5,9 +5,7 @@
   <div *ngIf="apartment.is_active===true">
     <b>{{ apartment.address }}</b>
     <app-apartment-detail *ngIf="apartment.is_active===true" [apartment]="apartment"></app-apartment-detail>
-
     <button (click)="deactivate(apartment)">Deactivate</button>
-
     <br>
   </div>
 </div>
@@ -18,7 +16,7 @@
   <div *ngIf="apartment.is_active===false">
     <b>{{ apartment.address }}</b>
     <app-apartment-detail *ngIf="apartment.is_active===false" [apartment]="apartment"></app-apartment-detail>
-    <button>Activate</button>
+    <button (click)="activate(apartment)">Activate</button>
     <br>
   </div>
 </div>
