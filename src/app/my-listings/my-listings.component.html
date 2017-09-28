@@ -2,13 +2,15 @@
 
 <h2>Active Listings:</h2>
 <div *ngFor="let apartment of apartments">
-  <div *ngIf="apartment.is_active===true">
-    <b>{{ apartment.address }}</b>
-    <app-apartment-detail *ngIf="apartment.is_active===true" [apartment]="apartment"></app-apartment-detail>
-    <button (click)="deactivate(apartment)">Deactivate</button>
-    <br>
-  </div>
+  <a *ngIf="apartment.is_active===true" (click)="selectApartment(apartment)">{{ apartment.address }}</a>
+    
+  
 </div>
+<app-apartment-detail *ngIf="selectedApartment" [apartment]="selectedApartment" [apartment]=selectedApartment></app-apartment-detail>
+<button *ngIf="selectedApartment" (click)="hideDetail(selectedApartment)">Hide Details</button>
+<button *ngIf="selectedApartment" (click)="deactivate(selectedApartment)">Deactivate</button>
+<br>
+
 
 <br>
 <h2>Inactive Listings:</h2>

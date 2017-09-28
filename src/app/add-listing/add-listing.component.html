@@ -1,0 +1,20 @@
+<h1>Add a new apartment!</h1>
+<form (submit)="addApartment()">
+  <input name="address" type="string" placeholder="Street Address" [(ngModel)]="address" autofocus>
+  <br>
+  <input name="city" type="string" placeholder="City" [(ngModel)]="city">
+  <br>
+  <input name="state" type="string" placeholder="State" [(ngModel)]="state">
+  <br>
+  <input name="zip" type="string" placeholder="Zip Code" [(ngModel)]="zip_code">
+  <br>
+  $<input name="rent" type="number" placeholder="Monthly Rent" [(ngModel)]="rent">
+  <br>
+  <input name="bedrooms" type="number" placeholder="Number of Bedrooms" [(ngModel)]="number_of_bedrooms">
+  <br>
+  <input name="bathrooms" type="number" placeholder="Number of Bathrooms" [(ngModel)]="number_of_bathrooms">
+  <br>
+  <input name="sqft" type="number" placeholder="Square Footage" [(ngModel)]="square_footage">
+  <br>
+  <button>List it!</button>
+</form>

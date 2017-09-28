@@ -42,4 +42,10 @@ export class ApartmentDataService {
      return this.http
        .post(`${this.baseUrl}/activate`, payload, { withCredentials: true });
   }
+
+  add(address: string, city: string, state: string, zip_code: string, rent: number, number_of_bedrooms: number, number_of_bathrooms: number, square_footage: number) {
+    const payload = { address, city, state, zip_code, rent, number_of_bedrooms, number_of_bathrooms, square_footage };
+    return this.http
+      .post(`${this.baseUrl}/add`, payload, { withCredentials: true});
+  }
 }
