@@ -34,8 +34,9 @@ export class MyListingsComponent implements OnInit {
     this.selectedApartment = null;
   }
 
-  deactivate(apartment: Apartment) {
+  deactivate(apartment : Apartment) {
     this.selectedApartment = apartment;
+    console.log("Apartment is " + this.selectedApartment);
     this.data
       .deactivate(this.selectedApartment);
   }

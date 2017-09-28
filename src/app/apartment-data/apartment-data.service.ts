@@ -8,25 +8,27 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ApartmentDataService {
 
+  private baseUrl = 'http://localhost:4567/api/apartments';
+
   constructor(private http: Http, private router: Router) { }
 
   getActiveListings(): Observable<Apartment[]> {
     return this.http
-      .get('http://localhost:4567/api/apartments')
+      .get(this.baseUrl)
       .map(response => response.json());
   }
 
   getMyListings(): Observable<Apartment[]> {
     return this.http
-      .get('http://localhost:4567/api/apartments/mine', { withCredentials: true })
+      .get(`${this.baseUrl}/mine`, { withCredentials: true })
       .map(response => response.json());
   }
 
   deactivate(apartment: Apartment) {
-    //    const payload = { apartment };
-    console.log("hello?");
+    const payload = { apartment };
     return this.http
-      .post('http://localhost:4567/api/apartments/deactivate', { withCredentials: true })
-      .map(response => null);
+      .post(`${this.baseUrl}/deactivate`, payload, { withCredentials: true })
+      .subscribe();
+      
   }
 }
