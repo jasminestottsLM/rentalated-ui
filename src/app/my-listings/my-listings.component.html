@@ -1,0 +1,23 @@
+<h1>My Listings!</h1>
+
+<h2>Active Listings:</h2>
+<div *ngFor="let apartment of apartments">
+  <div *ngIf="apartment.is_active===true">
+    <b>{{ apartment.address }}</b>
+    <app-apartment-detail *ngIf="apartment.is_active===true" [apartment]="apartment"></app-apartment-detail>
+      <button (click)="deactivate(apartment)">Deactivate</button>
+    <br>
+  </div>
+</div>
+
+<br>
+<h2>Inactive Listings:</h2>
+<div *ngFor="let apartment of apartments">
+  <div *ngIf="apartment.is_active===false">
+    <b>{{ apartment.address }}</b>
+    <app-apartment-detail *ngIf="apartment.is_active===false" [apartment]="apartment"></app-apartment-detail>
+    <button>Activate</button>
+    <br>
+  </div>
+</div>
+ 

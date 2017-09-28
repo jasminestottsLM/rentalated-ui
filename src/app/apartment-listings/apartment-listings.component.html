@@ -2,10 +2,10 @@
 
 
 <div *ngFor="let apartment of apartments">
-  <a (click)="selectApartment(apartment)">{{ apartment.address }}</a>
+  <a (click)="selectApartment(apartment)"  *ngIf="apartment.is_active===true">{{ apartment.address }}</a>
   <br>
   <button *ngIf="selectedApartment===apartment"  (click)="hideDetail()">Hide Detail</button>
-  <app-apartment-detail *ngIf="selectedApartment===apartment" [apartment]="selectedApartment"></app-apartment-detail>
+  <app-apartment-detail *ngIf="selectedApartment===apartment && apartment.is_active===true" [apartment]="selectedApartment"></app-apartment-detail>
 </div>
 
 

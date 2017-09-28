@@ -11,10 +11,12 @@ import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { ApartmentDetailComponent } from './apartment-detail/apartment-detail.component';
 import { LoginComponent } from './login/login.component';
 import { SessionDataService } from './session-data/session-data.service';
+import { MyListingsComponent } from './my-listings/my-listings.component';
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent},
-  { path: '', component: ApartmentListingsComponent}
+  { path: '', component: ApartmentListingsComponent},
+  { path: 'my-listings', component: MyListingsComponent}
 ];
 
 @NgModule({
@@ -24,6 +26,7 @@ const routes: Route[] = [
     ApartmentListingsComponent,
     ApartmentDetailComponent,
     LoginComponent,
+    MyListingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,3 +39,4 @@ const routes: Route[] = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 
