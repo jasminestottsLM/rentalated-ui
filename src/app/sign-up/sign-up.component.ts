@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionDataService } from '../session-data/session-data.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
+import { UserDataService } from '../user-data/user-data.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ export class SignUpComponent implements OnInit {
   private password: string;
   private user: User;
 
-  constructor(private service: SessionDataService, private router: Router) { }
+  constructor(private service: UserDataService, private router: Router) { }
 
   ngOnInit() {
   }

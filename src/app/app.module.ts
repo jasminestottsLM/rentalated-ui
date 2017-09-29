@@ -11,6 +11,7 @@ import { ApartmentDataService } from './apartment-data/apartment-data.service';
 import { ApartmentDetailComponent } from './apartment-detail/apartment-detail.component';
 import { LoginComponent } from './login/login.component';
 import { SessionDataService } from './session-data/session-data.service';
+import { UserDataService } from './user-data/user-data.service';
 import { MyListingsComponent } from './my-listings/my-listings.component';
 import { AddListingComponent } from './add-listing/add-listing.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -41,7 +42,7 @@ const routes: Route[] = [
     FormsModule
   ],
 
-  providers: [ApartmentDataService, SessionDataService],
+  providers: [ApartmentDataService, SessionDataService, UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
