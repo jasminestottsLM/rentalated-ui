@@ -48,4 +48,12 @@ export class SessionDataService {
       .map(response => response.json())
       .do(currentUser => this.currentUser = currentUser);
   }
+
+  addUser(first_name, last_name, email, password) {
+    const payload = { first_name, last_name, email, password };
+    return this.http
+      .post(`${this.baseUrl}/newUser`, payload, this.options)
+      .map(response=> response.json())
+      .do(user =>this.currentUser=user);
+  }
 }

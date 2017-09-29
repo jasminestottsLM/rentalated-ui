@@ -46,7 +46,7 @@ export class ApartmentDataService {
        .post(`${this.baseUrl}/activate`, payload, { withCredentials: true });
   }
 
-  like(apartment) {
+  like(apartment): Observable<User[]>{
     const payload = { id: apartment.id };
      return this.http
      .post(`${this.baseUrl}/like`, payload, { withCredentials: true })
