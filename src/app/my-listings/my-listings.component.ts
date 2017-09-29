@@ -36,14 +36,12 @@ export class MyListingsComponent implements OnInit {
   }
 
   deactivate(apartment: Apartment) {
-    console.log(apartment);
      this.data
        .deactivate(apartment)
        .subscribe(() => apartment.is_active = false);
   }
 
   activate(apartment: Apartment) {
-    console.log(apartment);
      this.data
        .activate(apartment)
        .subscribe(() => apartment.is_active = true);

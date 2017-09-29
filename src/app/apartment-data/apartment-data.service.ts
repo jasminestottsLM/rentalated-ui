@@ -5,6 +5,7 @@ import { Apartment } from '../apartment';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import { User } from '../user';
 
 @Injectable()
 export class ApartmentDataService {
@@ -12,8 +13,10 @@ export class ApartmentDataService {
   private baseUrl = 'http://localhost:4567/api/apartments';
   id: string;
   apartment: Apartment;
+  user: User;
 
   apartmentChanged: Subject<Apartment>;
+  likedBy: Array<User>;
 
   constructor(private http: Http, private router: Router) { 
     this.apartmentChanged = new Subject<Apartment>();
@@ -41,6 +44,13 @@ export class ApartmentDataService {
     const payload = { id: apartment.id };
      return this.http
        .post(`${this.baseUrl}/activate`, payload, { withCredentials: true });
+  }
+
+  like(apartment) {
+    const payload = { id: apartment.id };
+     return this.http
+     .post(`${this.baseUrl}/like`, payload, { withCredentials: true })
+     .map(response => response.json());
   }
 
   add(address: string, city: string, state: string, zip_code: string, rent: number, number_of_bedrooms: number, number_of_bathrooms: number, square_footage: number) {
