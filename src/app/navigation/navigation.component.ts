@@ -17,13 +17,17 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.service
       .logout()
-      .subscribe(user => this.currentUser = user);
+      .subscribe(currentUser => this.currentUser = currentUser);
     // have to subscribe or nothing will happen when you click the logout button
     // observables don't fire unless subscribers are present
     this.router.navigate(['/']);
   }
 
   ngOnInit() {
+    this.service  
+      .getUser()
+      .subscribe(currentUser => this.currentUser = currentUser);
+    
     this.service
       .userChanged
       .subscribe(user => this.currentUser = user);

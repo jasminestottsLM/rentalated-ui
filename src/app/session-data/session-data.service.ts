@@ -41,4 +41,11 @@ export class SessionDataService {
       .map(response => null)  //TODO finish the failure path?
       .do(user => this.userChanged.next(user));
   }
+
+  getUser(): Observable<User> {
+    return this.http
+      .get(this.baseUrl)
+      .map(response => response.json())
+      .do(currentUser => this.currentUser = currentUser);
+  }
 }
