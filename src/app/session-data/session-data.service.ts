@@ -16,6 +16,8 @@ export class SessionDataService {
   userChanged: Subject<User>;
   //declaring the subject- an object that represents an observable- to be broadcast
 
+  currentUser: User;
+
   constructor(private http: Http) {
     this.userChanged = new Subject<User>();
     // initializing the subject
@@ -28,7 +30,8 @@ export class SessionDataService {
       .map(response => response.status === 201 ? response.json() : null)
       // set status and response in java api to match
       // implicit response of responsejson() or null
-      .do(user => this.userChanged.next(user));
+      .do(user => this.userChanged.next(user))
+      .do(user=> this.currentUser=user);
       // userChanged is a broadcast channel, and the next value sent is "user"
   }
 
