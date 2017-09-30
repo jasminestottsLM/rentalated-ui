@@ -5,14 +5,15 @@
   <br>
   <div *ngIf="selectedApartment===apartment">
     
-    <div *ngIf="currentUser !== undefined && currentUser.id !== apartment.user_id && currentUser.id !== apartment.user_id" (click)="like(apartment)">
+    <div *ngIf="currentUser !== undefined && currentUser.id !== apartment.user_id && currentUser.id !== apartment.user_id &&likedBy.indexOf(currentUser.id) != -1" (click)="like(apartment)">
         <button>Like</button>
     </div>
     
-    Who liked it?  
-    <div *ngFor="let likedUser of likedBy">
-      here's who {{ likedUser.first_name }} 
-    </div>
+    <a routerLink="/login" *ngIf="currentUser===undefined">
+    Login to Like this Apartment
+    </a>
+    <br>   
+    Number of Likes: {{ likedBy.length }} 
     <app-apartment-detail *ngIf="selectedApartment===apartment && apartment.is_active===true" [apartment]="selectedApartment"></app-apartment-detail>
     <button *ngIf="selectedApartment===apartment"  (click)="hideDetail()">Hide Detail</button>
   </div>

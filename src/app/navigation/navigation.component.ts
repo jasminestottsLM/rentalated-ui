@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionDataService } from '../session-data/session-data.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
+import { ApartmentDataService } from '../apartment-data/apartment-data.service';
 
 @Component({
   selector: 'app-navigation',
@@ -21,6 +22,7 @@ export class NavigationComponent implements OnInit {
     // have to subscribe or nothing will happen when you click the logout button
     // observables don't fire unless subscribers are present
     this.router.navigate(['/']);
+    this.service.currentUser = null;
   }
 
   ngOnInit() {
