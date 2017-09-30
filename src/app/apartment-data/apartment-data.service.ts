@@ -28,6 +28,13 @@ export class ApartmentDataService {
       .map(response => response.json());
   }
 
+  getLikes(apartment): Observable<User[]> {
+    const payload = { id: apartment.id };
+    return this.http
+      .post(`${this.baseUrl}/getLikes`, payload, { withCredentials: true})
+      .map(response => response.json());
+  }
+
   getMyListings(): Observable<Apartment[]> {
     return this.http
       .get(`${this.baseUrl}/mine`, { withCredentials: true })

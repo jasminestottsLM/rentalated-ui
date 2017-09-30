@@ -12,6 +12,10 @@
 <h2>Inactive Listings:</h2>
 <div *ngFor="let apartment of apartments">
   <a *ngIf="apartment.is_active===false" (click)="selectApartment(apartment)">{{ apartment.address }}</a>
+  Liked by:
+  <div *ngFor="let likedUser of likedBy">
+    {{ likedUser.first_name }} 
+  </div>
 </div>
 <br>
 <hr>

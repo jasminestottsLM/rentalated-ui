@@ -31,6 +31,9 @@ export class ApartmentListingsComponent implements OnInit {
 
   selectApartment(apartment: Apartment) {
     this.selectedApartment = apartment;
+    this.data
+      .getLikes(apartment)
+      .subscribe(likedBy => this.likedBy = likedBy);
   }
 
   hideDetail() {
