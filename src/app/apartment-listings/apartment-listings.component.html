@@ -10,10 +10,9 @@
     </div>
     
     Who liked it?  
-    <!-- <div *ngFor="let likedUser of likerUsers">
-      {{ first_name }}
+    <div *ngFor="let likedUser of likedBy">
+      here's who {{ likedUser.first_name }} 
     </div>
-     -->
     <app-apartment-detail *ngIf="selectedApartment===apartment && apartment.is_active===true" [apartment]="selectedApartment"></app-apartment-detail>
     <button *ngIf="selectedApartment===apartment"  (click)="hideDetail()">Hide Detail</button>
   </div>

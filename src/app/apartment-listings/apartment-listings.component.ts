@@ -15,7 +15,7 @@ export class ApartmentListingsComponent implements OnInit {
   error: string;
   selectedApartment: Apartment;
   currentUser: User;
-  likedUsers: User[];
+  likedBy: User[];
 
   constructor(private data: ApartmentDataService, private service: SessionDataService) { }
 
@@ -40,7 +40,6 @@ export class ApartmentListingsComponent implements OnInit {
   like(apartment: Apartment) {
      this.data
        .like(apartment)
-       .subscribe(likedBy => this.likedUsers = likedBy);
-    console.log(this.likedUsers);
+       .subscribe(likedBy => this.likedBy = likedBy);
   }
 }

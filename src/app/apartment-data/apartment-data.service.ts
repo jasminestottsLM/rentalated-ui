@@ -16,7 +16,7 @@ export class ApartmentDataService {
   user: User;
 
   apartmentChanged: Subject<Apartment>;
-  likedBy: Array<User>;
+  likedBy: User[];
 
   constructor(private http: Http, private router: Router) { 
     this.apartmentChanged = new Subject<Apartment>();
